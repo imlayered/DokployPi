@@ -1,6 +1,7 @@
 import os
 from flask import Flask, request
 from dotenv import load_dotenv
+from logger import logger
 
 load_dotenv()
 
@@ -24,6 +25,12 @@ def webhook():
     print(f"  title: {title}")
     print(f"  msg: {message}")
     print(f"  priority: {priority}")
+    logger.log_event({
+        'endpoint': 'webhook',
+        'title': title,
+        'message': message,
+        'priority': priority
+    })
     return '', 204
 
 @app.route(f"/{SECRET_URL}/version", methods=['GET'])
@@ -42,6 +49,12 @@ def webhook_message():
     print(f"  title: {title}")
     print(f"  msg: {message}")
     print(f"  priority: {priority}")
+    logger.log_event({
+        'endpoint': 'webhook_message',
+        'title': title,
+        'message': message,
+        'priority': priority
+    })
     return '{}', 200, {'Content-Type': 'application/json'}
 
 if __name__ == "__main__":
