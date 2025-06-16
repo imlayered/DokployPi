@@ -1,4 +1,4 @@
 #!/bin/bash
-cd /home/auri/dokploypi
+cd /home/{your_name}/dokploypi
 source venv/bin/activate
 python3 app.py
