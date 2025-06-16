@@ -31,6 +31,12 @@ def webhook():
         'message': message,
         'priority': priority
     })
+    try:
+        with open('logs/latest_notification.json', 'w') as notif_file:
+            import json
+            json.dump({'title': title, 'message': message, 'priority': priority}, notif_file)
+    except Exception as e:
+        print(f"Failed to write notification: {e}")
     return '', 204
 
 @app.route(f"/{SECRET_URL}/version", methods=['GET'])
@@ -55,6 +61,12 @@ def webhook_message():
         'message': message,
         'priority': priority
     })
+    try:
+        with open('logs/latest_notification.json', 'w') as notif_file:
+            import json
+            json.dump({'title': title, 'message': message, 'priority': priority}, notif_file)
+    except Exception as e:
+        print(f"Failed to write notification: {e}")
     return '{}', 200, {'Content-Type': 'application/json'}
 
 if __name__ == "__main__":
