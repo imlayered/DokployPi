@@ -1,3 +1,5 @@
 .env
 venv/
 logs/
+server/__pycache__/ 
+cli.json
