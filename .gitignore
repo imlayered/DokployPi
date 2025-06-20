@@ -3,3 +3,7 @@ venv/
 logs/
 server/__pycache__/ 
 cli.json
+server/package-lock.json
+package-lock.json
+server/node_modules/
+node_modules/
